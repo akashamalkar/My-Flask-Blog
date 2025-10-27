@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block title %}All Posts{% endblock %}
+{% block content %}
+<h2>All Posts</h2>
+<div class="post-list">
+    {% for post in posts %}
+        <div class="post-card" onclick="openPost({{ post.id }})">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.content[:100] }}...</p>
+        </div>
+    {% else %}
+        <p>No posts yet! <a href="{{ url_for('new_post') }}">Create one</a></p>
+    {% endfor %}
+</div>
+{% endblock %}
